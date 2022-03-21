@@ -9,6 +9,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomePage />} />
+          <Route path='/:username/:repo' element={<RepoIssuesPage />} />
         </Routes>
       </BrowserRouter>
     </main>

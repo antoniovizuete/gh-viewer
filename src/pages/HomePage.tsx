@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import LabeledInput from '../components/LabeledInput'
 import Logo from '../components/Logo'
 
@@ -11,6 +12,7 @@ const intialState = {
 }
 
 export default function HomePage() {
+  const navigate = useNavigate()
   const [state, setState] = useState(intialState)
   const [disabled, setDisabled] = useState(true)
 
@@ -25,7 +27,7 @@ export default function HomePage() {
     if (!state[USERNAME] || !state[REPOSITORY]) {
       setDisabled(true)
     } else {
-      console.log(`/${state[USERNAME]}/${state[REPOSITORY]}`)
+      navigate(`/${state[USERNAME]}/${state[REPOSITORY]}`)
     }
   }
 
