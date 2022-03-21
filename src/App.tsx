@@ -1,12 +1,17 @@
-import Logo from './components/Logo'
+import HomePage from './pages/HomePage'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import RepoIssuesPage from './pages/RepoIssuesPage'
 
 function App() {
 
   return (
-    <div className='min-h-screen flex justify-center items-center'>
-      <Logo className='fill-blue-400 h-48'/>
-      <h1 className='text-6xl font-semibold text-blue-500'>gh-viewer</h1>
-    </div>
+    <main className='bg-slate-50 min-h-screen'>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+        </Routes>
+      </BrowserRouter>
+    </main>
   )
 }
 
