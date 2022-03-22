@@ -17,6 +17,13 @@ export default function RepoIssuesPage() {
   }
 
   return (
-   data?.items.map(issue => <IssueItem key={issue.id} {...issue} />)
+    <>
+      <nav className='border-b border-blue-500 text-xl pb-4'>
+        Showing <span className='font-bold'>{data?.total_count}</span> issues for <span className='font-bold'>{username}/{repo}</span>
+      </nav>
+      <section className='flex flex-col divide-y divide-blue-500'>
+        {data?.items.map(issue => <IssueItem key={issue.id} {...issue} />)}
+      </section>
+    </>
   )
 }

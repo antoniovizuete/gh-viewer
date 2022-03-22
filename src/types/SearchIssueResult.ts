@@ -1,8 +1,9 @@
 type User = {
   login: string,
+  avatar_url: string
 }
 
-type Label = {
+export type Label = {
   id: number,
   name: string,
   description: string,
