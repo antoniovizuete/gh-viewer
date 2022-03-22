@@ -1,10 +1,8 @@
 import { useParams } from 'react-router'
-import { Link } from 'react-router-dom'
 import { useGetIssue } from '../hooks/useGetIssue'
 import { useDateTimeFormater } from '../hooks/useDateTimeFormater'
-import Markdown from '../components/Markdown'
 import Comments from '../components/Comments'
-import { Comment } from '../types/Comment'
+import PageNavbar from '../components/PageNavbar'
 
 
 export default function IssuePage() {
@@ -25,10 +23,7 @@ export default function IssuePage() {
 
   return (
     <>
-      <nav className='fixed top-0 mt-24 h-12 container border-b border-blue-500 text-xl pb-4 z-50 backdrop-blur-sm bg-slate-100/80 flex gap-1 sm:gap-2 items-center'>
-        <div className='m-1 sm:m-2'>
-        <Link to={`/${username}/${repo}`} className="rounded-md bg-blue-500 p-2 text-white text-xs text-center sm:text-sm block">Go back</Link>
-        </div>
+      <PageNavbar to={`/${username}/${repo}`}>
         <div className='flex-grow sm:flex sm:justify-between sm:items-center'>
           <span className='text-xs sm:text-sm md:text-md lg:text-lg block sm:inline font-medium'>{data.title}</span>
           <span className='text-gray-600 text-xs sm:text-sm md:text-md mr-2'>
@@ -39,7 +34,7 @@ export default function IssuePage() {
             <span>{timeAgo}</span>
           </span>
         </div>
-      </nav>
+      </PageNavbar>
       <section className='min-h-screen overflow-y-auto m-1 sm:m-2 mt-36 sm:mt-36'>  
         <Comments username={username} repo={repo} issue={issue} mainComment={data} />
       </section>
