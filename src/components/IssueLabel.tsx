@@ -3,7 +3,7 @@ import { Label } from '../types/Issue'
 export default function IssueLabel(label: Label) {
   return (
     <div 
-      className='mt-2 px-3 py-1 rounded-full border text-xs z-10'
+      className='w-fit px-2 md:px-3 py-1 rounded-md md:rounded-full border text-xs z-10'
       style={{ 
         borderColor: `#${label.color}`,
         backgroundColor: `#${label.color}`,
