@@ -5,7 +5,7 @@ type LabeledInputProps = {
   value: string
 }
 
-const LabeledInput: React.FC<LabeledInputProps> = ({ label, name, onChange, value }) => {
+const LabeledInput = ({ label, name, onChange, value }: LabeledInputProps) => {
   return (
     <div className='flex flex-col w-72 sm:w-96'>
       <label htmlFor={name}>{label}</label>

@@ -1,9 +1,8 @@
 type LogoProps = {
   className?: string
-
 }
 
-const Logo: React.FC<LogoProps> = ({ className }) => (
+const Logo = ({ className }: LogoProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 800 700"
