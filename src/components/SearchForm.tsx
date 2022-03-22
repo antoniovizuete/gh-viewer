@@ -1,4 +1,3 @@
-
 import LabeledInput from '../components/LabeledInput'
 import { REPOSITORY, USERNAME, useSearchForm } from '../hooks/useSearchForm'
 

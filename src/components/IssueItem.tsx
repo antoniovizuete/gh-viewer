@@ -1,6 +1,6 @@
 import { Issue } from '../types/SearchIssueResult'
 
-export const IssueItem = (issue: Issue) => {
+export default function IssueItem(issue: Issue) {
   return (
     <>
       <li>{issue.title}</li>

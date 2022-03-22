@@ -5,7 +5,7 @@ type LabeledInputProps = {
   value: string
 }
 
-const LabeledInput = ({ label, name, onChange, value }: LabeledInputProps) => {
+export default function LabeledInput({ label, name, onChange, value }: LabeledInputProps) {
   return (
     <div className='flex flex-col w-72 sm:w-96'>
       <label htmlFor={name}>{label}</label>
@@ -18,5 +18,3 @@ const LabeledInput = ({ label, name, onChange, value }: LabeledInputProps) => {
     </div>
   )
 }
-
-export default LabeledInput

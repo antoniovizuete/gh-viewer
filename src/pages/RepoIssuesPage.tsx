@@ -1,5 +1,5 @@
 import { useParams } from 'react-router'
-import { IssueItem } from '../components/IssueItem'
+import IssueItem from '../components/IssueItem'
 import { useSearchIssues } from '../hooks/useSearchIssues'
 
 export default function RepoIssuesPage() {
