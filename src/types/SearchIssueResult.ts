@@ -9,7 +9,7 @@ type Label = {
   color: string,
 }
 
-type Issue = {
+export type Issue = {
   id: number,
   title: string,
   user: User,

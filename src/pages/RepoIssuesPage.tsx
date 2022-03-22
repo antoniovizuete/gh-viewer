@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
+import { IssueItem } from '../components/IssueItem'
 import { useSearchIssues } from '../hooks/useSearchIssues'
-
-
 
 export default function RepoIssuesPage() {
   const { username, repo } = useParams()
@@ -19,18 +17,6 @@ export default function RepoIssuesPage() {
   }
 
   return (
-   data?.items.map(issue => (
-     <ul key={issue.id}>
-       <li>{issue.title}</li>
-       <li>{issue.user.login}</li>
-       <li>{issue.created_at}</li>
-       <li>{issue.comments}</li>
-       <ul>{issue.labels.map(label => (
-        <li key={label.id}>{label.name}</li>
-        ))}</ul>
-        {issue.pull_request && "Pull Request"}
-        {!issue.pull_request && "Issue"}
-     </ul>
-   ))
+   data?.items.map(issue => <IssueItem key={issue.id} {...issue} />)
   )
 }
