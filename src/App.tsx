@@ -9,9 +9,9 @@ function App() {
     <main>
       <Header />
       <Routes>
-        
         <Route path='/:username/:repo' element={<RepoIssuesPage />} />
         <Route path='/:username/:repo/issues/:issue' element={<IssuePage />} />
+        <Route path='/not-found' element={<HomePage notFound />} />
         <Route path='/' element={<HomePage />} />
       </Routes>
     </main>
