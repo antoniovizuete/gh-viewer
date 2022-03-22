@@ -1,43 +1,25 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
+import { useSearchIssues } from '../hooks/useSearchIssues'
 
-type Issue = {
-  id: number,
-  title: string,
-  user: {
-    login: string,
-  }
-  created_at: string,
-  comments: number,
-  labels: {
-    id: number,
-    name: string,
-    description: string,
-    color: string,
-  }[],
-  pull_request: Record<string, unknown>
-}
+
 
 export default function RepoIssuesPage() {
   const { username, repo } = useParams()
-  const [issues, setIssues] = useState<Issue[]>([])
-  const [loading, setLoading] = useState(true)
-  
-  useEffect(() => {
-    fetch(`https://api.github.com/repos/${username}/${repo}/issues?state=open`)
-      .then(res => res.json())
-      .then(setIssues)
-      .finally(() => setLoading(false))
-  } ,[])
+  const { isError, isLoading, data } = useSearchIssues(username, repo)
 
-  if (loading) {
+  if (isLoading) {
     return <h1>Loading...</h1>
   }
-  if (issues.length === 0) {
-    return <h1>No issues</h1>
+  if (isError) {
+    return <h1>{isError}</h1>
   }
+  if (data?.total_count === 0) {
+    return <h1>No issues found for {username}/{repo}</h1>
+  }
+
   return (
-   issues.map(issue => (
+   data?.items.map(issue => (
      <ul key={issue.id}>
        <li>{issue.title}</li>
        <li>{issue.user.login}</li>
