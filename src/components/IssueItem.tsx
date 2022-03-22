@@ -1,4 +1,4 @@
-import { useTimeAgo } from '../hooks/useTimeAgo'
+import { useDateTimeFormater } from '../hooks/useDateTimeFormater'
 import { Issue } from '../types/SearchIssueResult'
 import IssueLabel from './IssueLabel';
 import CommentSVG from './svg/CommentSVG';
@@ -6,7 +6,7 @@ import IssueSVG from './svg/IssueSVG';
 import PullRequestSVG from './svg/PullRequestSVG';
 
 export default function IssueItem(issue: Issue) {
-  const timeAgo = useTimeAgo(new Date(issue.created_at));
+  const {timeAgo, formated} = useDateTimeFormater(new Date(issue.created_at));
 
   return (
     <div className='p-5 flex justify-start items-start hover:bg-indigo-50 odd:bg-stone-100'>
@@ -20,8 +20,8 @@ export default function IssueItem(issue: Issue) {
         </div>
       </div>
       <div className='flex-grow' >
-        <h2 className='text-md font-bold tracking-tight text-gray-900'>{issue.title}</h2>
-        <h5 className='text-xs text-gray-600'>opened {timeAgo} by {issue.user.login}</h5>
+        <h2 className='text-md font-semibold tracking-tight text-gray-900'>{issue.title}</h2>
+        <h5 className='text-xs text-gray-600'>opened <span title={formated}>{timeAgo}</span> by <span className='italic'>{issue.user.login}</span></h5>
         <div className='flex gap-5'>
           {issue.labels.map(label => <IssueLabel key={label.id} {...label} />)}
         </div>
@@ -29,7 +29,7 @@ export default function IssueItem(issue: Issue) {
       {issue.comments > 0 && 
         <div className='flex flex-col justify-center items-center w-10'>
           <CommentSVG />
-          {issue.comments}
+          <div className="text-xs font-light">{issue.comments}</div>
         </div>
       }
     </div>

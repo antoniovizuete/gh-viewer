@@ -7,7 +7,7 @@ const epochs: [Intl.RelativeTimeFormatUnit, number][] = [
   ['second', 1]
 ];
 
-export const useTimeAgo = (date: Date) => {
+export const useDateTimeFormater = (date: Date, locale = 'en-US') => {
   const now = new Date()
   const timeAgoInSeconds = (date.getTime() - now.getTime())/1000
   const [unit, qty] = epochs
@@ -18,6 +18,10 @@ export const useTimeAgo = (date: Date) => {
   ] as [Intl.RelativeTimeFormatUnit, number, number])
   .find(([, ,reminder]) =>  reminder >= 1 ) || ['second',0]
   
-  const formater = new Intl.RelativeTimeFormat('en-UK')
-  return formater.format(qty, unit as Intl.RelativeTimeFormatUnit)
+  const relativeTimeFormater = new Intl.RelativeTimeFormat(locale)
+  const dateFormater = new Intl.DateTimeFormat(locale)
+  return { 
+    timeAgo: relativeTimeFormater.format(qty, unit as Intl.RelativeTimeFormatUnit),
+    formated: dateFormater.format(date)
+  }
 }

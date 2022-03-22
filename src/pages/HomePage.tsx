@@ -5,7 +5,7 @@ export default function HomePage() {
   
   return (
     <>
-      <section className='flex flex-col justify-center items-center gap-5'>
+      <section className='mt-36 flex flex-col justify-center items-center gap-5'>
         <h1 className='text-center'>Search for issues and pull request of an GitHub repo</h1>
         <SearchForm />
       </section>

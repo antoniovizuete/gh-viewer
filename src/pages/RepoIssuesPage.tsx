@@ -18,10 +18,10 @@ export default function RepoIssuesPage() {
 
   return (
     <>
-      <nav className='border-b border-blue-500 text-xl pb-4'>
-        Showing <span className='font-bold'>{data?.total_count}</span> issues for <span className='font-bold'>{username}/{repo}</span>
+      <nav className='fixed top-0 mt-24 h-12 container border-b border-blue-500 text-xl pb-4 z-50 backdrop-blur-sm bg-slate-100/80'>
+        Showing <span className='font-bold'>{data?.items.length}</span> issues (of {data?.total_count}) for <span className='font-bold'>{username}/{repo}</span>
       </nav>
-      <section className='flex flex-col divide-y divide-blue-500'>
+      <section className='min-h-screen overflow-y-auto mt-36 flex flex-col divide-y divide-blue-500'>
         {data?.items.map(issue => <IssueItem key={issue.id} {...issue} />)}
       </section>
     </>
