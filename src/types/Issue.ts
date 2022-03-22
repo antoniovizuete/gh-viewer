@@ -1,7 +1,4 @@
-type User = {
-  login: string,
-  avatar_url: string
-}
+import { User } from './User'
 
 export type Label = {
   id: number,
@@ -12,7 +9,9 @@ export type Label = {
 
 export type Issue = {
   id: number,
+  number: number,
   title: string,
+  body: string,
   user: User,
   created_at: string,
   comments: number,

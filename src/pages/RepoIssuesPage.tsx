@@ -22,7 +22,13 @@ export default function RepoIssuesPage() {
         Showing <span className='font-bold'>{data?.items.length}</span> issues (of {data?.total_count}) for <span className='font-bold'>{username}/{repo}</span>
       </nav>
       <section className='min-h-screen overflow-y-auto mt-36 flex flex-col divide-y divide-blue-500'>
-        {data?.items.map(issue => <IssueItem key={issue.id} {...issue} />)}
+        {data?.items.map(issue => (
+          <IssueItem 
+            key={issue.id} 
+            repo={repo}
+            username={username}
+            {...issue}
+          />))}
       </section>
     </>
   )

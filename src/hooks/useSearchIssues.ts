@@ -1,6 +1,6 @@
 import useSWR from "swr"
 import { githubFetcher } from '../fetchers/githubFetcher'
-import { SearchIssueResult } from '../types/SearchIssueResult'
+import { SearchIssueResult } from '../types/Issue'
 
 export const useSearchIssues = (username?: string, repo?: string) => {
   const { data, error } = useSWR<SearchIssueResult>(

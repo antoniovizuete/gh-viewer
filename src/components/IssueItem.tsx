@@ -1,15 +1,24 @@
+import { Link } from 'react-router-dom';
 import { useDateTimeFormater } from '../hooks/useDateTimeFormater'
-import { Issue } from '../types/SearchIssueResult'
+import { Issue } from '../types/Issue'
 import IssueLabel from './IssueLabel';
 import CommentSVG from './svg/CommentSVG';
 import IssueSVG from './svg/IssueSVG';
 import PullRequestSVG from './svg/PullRequestSVG';
 
-export default function IssueItem(issue: Issue) {
+type IssueItemProps = Issue & {
+  username?: string, 
+  repo?: string
+}
+
+export default function IssueItem(issue: IssueItemProps) {
   const {timeAgo, formated} = useDateTimeFormater(new Date(issue.created_at));
 
   return (
-    <div className='p-5 flex justify-start items-start hover:bg-indigo-50 odd:bg-stone-100'>
+    <Link 
+      to={`/${issue.username}/${issue.repo}/issues/${issue.number}`} 
+      className='p-5 flex justify-start items-start hover:bg-indigo-50 odd:bg-stone-100'
+    >
       <div className='pr-4 pt-2'>
         <div className='flex flex-col justify-center items-center w-10'>
           {issue.pull_request && <PullRequestSVG />}
@@ -32,6 +41,6 @@ export default function IssueItem(issue: Issue) {
           <div className="text-xs font-light">{issue.comments}</div>
         </div>
       }
-    </div>
+    </Link>
   )
 }

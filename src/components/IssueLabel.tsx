@@ -1,4 +1,4 @@
-import { Label } from '../types/SearchIssueResult'
+import { Label } from '../types/Issue'
 
 export default function IssueLabel(label: Label) {
   return (
