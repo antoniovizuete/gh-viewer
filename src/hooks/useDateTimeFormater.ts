@@ -5,22 +5,23 @@ const epochs: [Intl.RelativeTimeFormatUnit, number][] = [
   ['hour', 3600],
   ['minute', 60],
   ['second', 1]
-];
+]
 
 export const useDateTimeFormater = (date: Date, locale = 'en-US') => {
   const now = new Date()
-  const timeAgoInSeconds = (date.getTime() - now.getTime())/1000
+  const timeAgoInSeconds = (date.getTime() - now.getTime()) / 1000
   const [unit, qty] = epochs
-  .map(([name, seconds]) => [ 
-    name,
-    Math.floor(timeAgoInSeconds / seconds),
-    Math.floor(Math.abs(timeAgoInSeconds) / seconds),
-  ] as [Intl.RelativeTimeFormatUnit, number, number])
-  .find(([, ,reminder]) =>  reminder >= 1 ) || ['second',0]
-  
+    .map(([name, seconds]) => [
+      name,
+      Math.floor(timeAgoInSeconds / seconds),
+      Math.floor(Math.abs(timeAgoInSeconds) / seconds)
+    ] as [Intl.RelativeTimeFormatUnit, number, number])
+    .find(([, , reminder]) => reminder >= 1) || ['second', 0]
+
   const relativeTimeFormater = new Intl.RelativeTimeFormat(locale)
   const dateFormater = new Intl.DateTimeFormat(locale)
-  return { 
+
+  return {
     timeAgo: relativeTimeFormater.format(qty, unit as Intl.RelativeTimeFormatUnit),
     formated: dateFormater.format(date)
   }

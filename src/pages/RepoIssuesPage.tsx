@@ -5,7 +5,7 @@ import PageNavbar from '../components/PageNavbar'
 
 export default function RepoIssuesPage() {
   const { username, repo } = useParams()
-  const [pageIndex, setPageIndex] = useState(0);
+  const [pageIndex, setPageIndex] = useState(0)
 
   const handlePaginateClick = (next: number) => () => {
     setPageIndex(prev => prev + next)

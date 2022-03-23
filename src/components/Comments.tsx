@@ -23,7 +23,6 @@ export default function Comments({ username, repo, issue, mainComment }: Comment
 
   return (
     <>
-      
       <div className='flex flex-col gap-5 mt-4'>
         <Comment comment={mainComment} />
         {data.map(comment => <Comment key={comment.id} comment={comment} />)}

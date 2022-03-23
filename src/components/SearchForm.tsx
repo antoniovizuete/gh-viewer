@@ -2,7 +2,7 @@ import LabeledInput from '../components/LabeledInput'
 import { REPOSITORY, USERNAME, useSearchForm } from '../hooks/useSearchForm'
 
 export default function SearchForm() {
-  const { state, disabled, onChange, search} = useSearchForm()
+  const { state, disabled, onChange, search } = useSearchForm()
   return (
     <form onSubmit={search} className="flex flex-col justify-center items-center gap-5">
       <LabeledInput

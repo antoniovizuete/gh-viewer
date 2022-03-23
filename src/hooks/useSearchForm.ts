@@ -6,7 +6,7 @@ export const REPOSITORY = 'repository'
 
 const intialState = {
   [USERNAME]: '',
-  [REPOSITORY]: '',
+  [REPOSITORY]: ''
 }
 
 export const useSearchForm = () => {

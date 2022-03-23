@@ -17,7 +17,6 @@ export default function Markdown(props: { body: string }) {
         p: ({ node, ...props }) => <p className='text-md my-1' {...props}></p>,
         pre: ({ node, ...props }) => <pre className='rounded-md border border-slate-500 bg-slate-200 p-4 overflow-x-auto my-1' {...props}></pre>,
         code: ({ node, ...props }) => <code className='rounded-md border  bg-slate-200 p-0.5 px-1' {...props}></code>
-        
       }}
     >{props.body}</ReactMarkdown>
   )

@@ -5,7 +5,6 @@ type HomePageProps = {
 }
 
 export default function HomePage({ notFound = false }: HomePageProps) {
-  
   return (
     <>
       <section className='mt-36 flex flex-col justify-center items-center gap-5'>

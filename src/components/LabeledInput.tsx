@@ -1,3 +1,5 @@
+import React from 'react'
+
 type LabeledInputProps = {
   label: string
   name: string

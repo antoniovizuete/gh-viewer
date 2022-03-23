@@ -1,22 +1,22 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import { useDateTimeFormater } from '../hooks/useDateTimeFormater'
 import { Issue } from '../types/Issue'
-import IssueLabel from './IssueLabel';
-import CommentSVG from './svg/CommentSVG';
-import IssueSVG from './svg/IssueSVG';
-import PullRequestSVG from './svg/PullRequestSVG';
+import IssueLabel from './IssueLabel'
+import CommentSVG from './svg/CommentSVG'
+import IssueSVG from './svg/IssueSVG'
+import PullRequestSVG from './svg/PullRequestSVG'
 
 type IssueItemProps = Issue & {
-  username?: string, 
+  username?: string,
   repo?: string
 }
 
 export default function IssueItem(issue: IssueItemProps) {
-  const {timeAgo, formated} = useDateTimeFormater(new Date(issue.created_at));
+  const { timeAgo, formated } = useDateTimeFormater(new Date(issue.created_at))
 
   return (
-    <Link 
-      to={`/${issue.username}/${issue.repo}/issues/${issue.number}`} 
+    <Link
+      to={`/${issue.username}/${issue.repo}/issues/${issue.number}`}
       className='p-5 flex flex-col sm:flex-row justify-start items-start hover:bg-indigo-50 odd:bg-stone-100'
     >
       <div className='pr-4 pt-2'>
@@ -24,7 +24,7 @@ export default function IssueItem(issue: IssueItemProps) {
           {issue.pull_request && <PullRequestSVG />}
           {!issue.pull_request && <IssueSVG />}
           <span className='text-xs font-thin'>
-            {issue.pull_request ? "PR" : "Issue"}
+            {issue.pull_request ? 'PR' : 'Issue'}
           </span>
         </div>
       </div>
@@ -35,7 +35,7 @@ export default function IssueItem(issue: IssueItemProps) {
           {issue.labels.map(label => <IssueLabel key={label.id} {...label} />)}
         </div>
       </div>
-      {issue.comments > 0 && 
+      {issue.comments > 0 &&
         <div className='flex flex-col justify-center items-center w-10 mt-2 sm:mt-0'>
           <CommentSVG />
           <div className="text-xs font-light">{issue.comments}</div>

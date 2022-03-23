@@ -8,9 +8,9 @@ export type PagedIssuesType = {
   index: number
 }
 
-export default function PagedIssues({username, repo, index }: PagedIssuesType) {
+export default function PagedIssues({ username, repo, index }: PagedIssuesType) {
   const navigate = useNavigate()
-  const { isError, isLoading, data } = useSearchIssues({username, repo, index})
+  const { isError, isLoading, data } = useSearchIssues({ username, repo, index })
 
   if (isLoading) {
     return <h1>Loading...</h1>
@@ -23,14 +23,14 @@ export default function PagedIssues({username, repo, index }: PagedIssuesType) {
   }
 
   if (!Array.isArray(data?.items)) {
-    navigate("/not-found")
+    navigate('/not-found')
     return <></>
   }
 
   return (<>
     {data?.items.map(issue => (
-      <IssueItem 
-        key={issue.id} 
+      <IssueItem
+        key={issue.id}
         repo={repo}
         username={username}
         {...issue}
