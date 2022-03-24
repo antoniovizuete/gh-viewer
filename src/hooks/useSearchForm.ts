@@ -30,11 +30,7 @@ export const useSearchForm = () => {
   }
 
   useEffect(() => {
-    if (!state[USERNAME] || !state[REPOSITORY]) {
-      setDisabled(true)
-    } else {
-      setDisabled(false)
-    }
+    setDisabled(!state[USERNAME] || !state[REPOSITORY])
   }, [state])
 
   return {
